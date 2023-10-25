@@ -7,9 +7,7 @@ from modules.getstudentsessioninprogress import getstudentsessioninprogress
 from modules.getquestiondetail import getquestiondetail
 from modules.submitexampaper import submitexampaper
 
-def autoStudy():
-    logging.basicConfig(level=logging.WARN)
-    StudentNo='22073100514120001'
+def autoStudy(StudentNo):
     Token,ExamSubjectInfos=studentlogin(StudentNo)
     StudentInfo,StudentSessionsID=getstudentexaminfo(Token,StudentNo)
     QuestionAnswers=getstudentsessioninprogress(Token,StudentSessionsID)
@@ -26,4 +24,6 @@ def autoStudy():
     print(QuestionAnswers)
 
 if __name__=="__main__":
-    autoStudy()
+    logging.basicConfig(level=logging.WARN)
+    StudentNo='22073100514120001'
+    autoStudy(StudentNo)
