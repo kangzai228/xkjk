@@ -1,4 +1,4 @@
-import requests
+import requests,logging
 
 
 def studentlogin(StudentNo):
@@ -16,19 +16,16 @@ def studentlogin(StudentNo):
         'LoginType': 0,
     }
 
-    r = requests.post('https://xkjk.jxeea.cn:8000/EOAPI/studentlogin/studentlogin', headers=headers, json=json_data)
-    print(StudentNo,r.json()['Message'])
-    # if r.json()['Message'] in ["未找到考籍号。错误码：20401","只有授权学校学生能够登录网页进行模拟"]:
-    #     return 0
-    # else:
-    #     return 1
+    response = requests.post('https://xkjk.jxeea.cn:8000/EOAPI/studentlogin/studentlogin', headers=headers, json=json_data)
+    print(StudentNo,response.json()['Entity'])
+    logging.info(response.json()['Entity']['Token'])
     return response.json()['Entity']['Token'],response.json()['Entity']['ExamSubjectInfos']
 
 
 
 if __name__=="__main__":
     StudentNo='22073100514120001'
-    res=login(StudentNo)
+    res=studentlogin(StudentNo)
 
 
 """
