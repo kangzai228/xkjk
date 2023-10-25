@@ -17,8 +17,8 @@ def studentlogin(StudentNo):
     }
 
     response = requests.post('https://xkjk.jxeea.cn:8000/EOAPI/studentlogin/studentlogin', headers=headers, json=json_data)
-    print(StudentNo,response.json()['Entity'])
-    logging.info(response.json()['Entity']['Token'])
+    # print(StudentNo,response.json()['Entity'])
+    # logging.info(response.json()['Entity']['Token'])
     return response.json()['Entity']['Token'],response.json()['Entity']['ExamSubjectInfos']
 
 
