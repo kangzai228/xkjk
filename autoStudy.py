@@ -15,6 +15,7 @@ def autoStudy(StudentNo):
     QuestionAnswers=getstudentsessioninprogress(Token,StudentSessionsID)
     for QuestionAnswer in QuestionAnswers:
         # str(QuestionAnswers.index(QuestionAnswer+1)),
+        print(QuestionAnswers.index(QuestionAnswer)+1,end=' ')
         print("*"*120)
         QuestionID=QuestionAnswer['QuestionID']
         QuestionContent,OptionGroups=getquestiondetail(Token,QuestionID)
@@ -24,11 +25,11 @@ def autoStudy(StudentNo):
         for OptionGroup in OptionGroups:
             Options=OptionGroup['Options']
             for Option in Options:
+                QuestionOptionID=Option['QuestionOptionID']
                 QuestionOptionText=Option['QuestionOptionText']
-                print(QuestionOptionText)
+                print(QuestionOptionID,QuestionOptionText)
                 downloadImage(QuestionOptionText)
-
-        
+      
         sleep(2)
     QuestionAnswers=submitexampaper(Token,StudentSessionsID)
     print(QuestionAnswers)
