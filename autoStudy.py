@@ -28,7 +28,7 @@ def autoStudy(StudentNo):
         QuestionOptionGroupID=OptionGroups[0]["QuestionOptionGroupID"]
         sql1="INSERT INTO `Question` (`QuestionID`, `QuestionCategoryId`,`QuestionContent`,`QuestionOptionGroup` ) VALUES ( "+str(QuestionID)+", "+ str(QuestionCategoryId) +",'"+str(QuestionContent)+"',"+ str(QuestionOptionGroupID) +" )"
         # print(sql1)
-        # feiyingSQL(sql1)
+        feiyingSQL(sql1)
         print(QuestionContent)
         downloadImage(QuestionContent)
         # print(OptionGroups)
@@ -45,7 +45,7 @@ def autoStudy(StudentNo):
                 downloadImage(QuestionOptionText)
                 sql2="INSERT INTO `QuestionOption` (`QuestionID`,`QuestionOptionID`,`sha1`,`QuestionOptionText`,`QuestionOptionGroupID`,`QuestionOrder`) VALUES ("+str(QuestionID)+",'"+QuestionOptionID+"','"+sha1+"','"+ QuestionOptionText+"',"+ str(QuestionOptionGroupID)+","+str(QuestionOrder)+")"
                 # print(sql2)
-                # feiyingSQL(sql2)
+                feiyingSQL(sql2)
                 sleep(0.1)
         sleep(0.5)
     QuestionAnswers=submitexampaper(Token,StudentSessionsID)
