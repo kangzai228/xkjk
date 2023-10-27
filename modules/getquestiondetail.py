@@ -24,7 +24,7 @@ def getquestiondetail(Token,QuestionID):
     }
 
     response = requests.post('https://xkjk.jxeea.cn:8000/EOAPI/studentexam/getquestiondetail', headers=headers, json=json_data)
-    return response.json()['Entity']['QuestionContent'],response.json()['Entity']['OptionGroups']
+    return response.json()['Entity']
 
 
 """
