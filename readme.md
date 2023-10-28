@@ -54,3 +54,14 @@ for res in res_list:
     url='https://xkjk.jxeea.cn:8000'+res
     print(url)
 ```
+## mysql 事务回滚导致自增不连续
+
+修改自增锁级别方法:
+
+1. 编辑/etc/mysql/my.cnf，加入如下行:
+
+innodb_autoinc_lock_mode=0
+
+2. 重启MariaDB命令：
+
+systemctl restart mariadb.service
