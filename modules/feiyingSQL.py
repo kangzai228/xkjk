@@ -16,6 +16,13 @@ def feiyingSQL(sql,database='xkjk',host='localhost'):
     # 创建一个可以执行SQL语句的光标对象
     cursor = conn.cursor()
 
+    # 执行查询语句
+    # cursor.execute("SHOW VARIABLES LIKE 'innodb_autoinc_lock_mode'")
+    # 获取查询结果
+    # result = cursor.fetchone()
+    # autoinc_lock_mode = result[1]
+    # print("innodb_autoinc_lock_mode 的当前值是：", autoinc_lock_mode)
+
     # 执行SQL语句
     if sql.split(" ")[0].upper() =="SELECT":
         try:
