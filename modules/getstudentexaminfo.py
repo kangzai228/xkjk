@@ -1,6 +1,6 @@
 import requests
 
-def getstudentexaminfo(Token,StudentNo):
+def getstudentexaminfo(Token,StudentNo,SubjectID):
     headers = {
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
@@ -24,7 +24,7 @@ def getstudentexaminfo(Token,StudentNo):
         'ExamID': 1,
         'StudentNo': StudentNo,
         'SeatNo': 0,
-        'ExamSubjectID': 2,
+        'ExamSubjectID': SubjectID,#科目编号
         'Mac': '',
     }
 
