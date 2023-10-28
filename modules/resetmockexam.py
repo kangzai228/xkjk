@@ -26,7 +26,8 @@ def resetmockexam(Token,StudentSessionId):
     }
 
     response = requests.post('https://xkjk.jxeea.cn:8000/EOAPI/studentexam/resetmockexam', headers=headers, json=json_data)
-    print(response.json()["ResultType"])
+    # print(response.json()["ResultType"])
+    return response.json()["ResultType"]
 
 """
 {"ResultType":1,"Message":null,"Entity":true}
