@@ -15,7 +15,7 @@ from modules.getSHA1 import getSHA1
 
 def autoStudy(StudentNo):
     Token,ExamSubjectInfos=studentlogin(StudentNo)
-    SubjectID=1
+    SubjectID=2
     StudentInfo,StudentSessionsID=getstudentexaminfo(Token,StudentNo,SubjectID)
     resetmockexam(Token,StudentSessionsID)
 
@@ -45,10 +45,10 @@ def autoStudy(StudentNo):
                 QuestionOptionGroupID=Option['QuestionOptionGroupID']
                 QuestionOptionText=Option['QuestionOptionText']
                 QuestionOrder=Option['Order']
-                sha1=getSHA1(str(QuestionID)+QuestionOptionID)
+                sha1=getSHA1(str(QuestionOptionGroupID)+QuestionOptionID)
                 print(QuestionOptionID,QuestionOptionText,sha1)
                 downloadImage(QuestionOptionText)
-                sql2="INSERT INTO `QuestionOption` (`QuestionID`,`QuestionOptionID`,`sha1`,`QuestionOptionText`,`QuestionOptionGroupID`,`QuestionOrder`) VALUES ("+str(QuestionID)+",'"+QuestionOptionID+"','"+sha1+"','"+ QuestionOptionText+"',"+ str(QuestionOptionGroupID)+","+str(QuestionOrder)+")"
+                sql2="INSERT INTO `QuestionOption` (`QuestionOptionID`,`sha1`,`QuestionOptionText`,`QuestionOptionGroupID`,`QuestionOrder`) VALUES ('"+QuestionOptionID+"','"+sha1+"','"+ QuestionOptionText+"',"+ str(QuestionOptionGroupID)+","+str(QuestionOrder)+")"
                 # print(sql2)
                 feiyingSQL(sql2)
                 sleep(0.1)
