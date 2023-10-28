@@ -3,6 +3,8 @@ import logging
 
 from modules.studentlogin import studentlogin
 from modules.getstudentexaminfo import getstudentexaminfo
+from modules.resetmockexam import resetmockexam
+
 from modules.getstudentsessioninprogress import getstudentsessioninprogress
 from modules.getquestiondetail import getquestiondetail
 from modules.downloadImage import downloadImage
@@ -13,7 +15,10 @@ from modules.getSHA1 import getSHA1
 
 def autoStudy(StudentNo):
     Token,ExamSubjectInfos=studentlogin(StudentNo)
-    StudentInfo,StudentSessionsID=getstudentexaminfo(Token,StudentNo)
+    SubjectID=1
+    StudentInfo,StudentSessionsID=getstudentexaminfo(Token,StudentNo,SubjectID)
+    resetmockexam(Token,StudentSessionsID)
+
     QuestionAnswers=getstudentsessioninprogress(Token,StudentSessionsID)
     for QuestionAnswer in QuestionAnswers:
         # str(QuestionAnswers.index(QuestionAnswer+1)),
