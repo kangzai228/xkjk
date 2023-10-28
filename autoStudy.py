@@ -15,13 +15,12 @@ from modules.getSHA1 import getSHA1
 
 def autoStudy(StudentNo):
     Token,ExamSubjectInfos=studentlogin(StudentNo)
-    SubjectID=2
+    SubjectID=1
     StudentInfo,StudentSessionsID=getstudentexaminfo(Token,StudentNo,SubjectID)
     resetmockexam(Token,StudentSessionsID)
 
     QuestionAnswers=getstudentsessioninprogress(Token,StudentSessionsID)
     for QuestionAnswer in QuestionAnswers:
-        # str(QuestionAnswers.index(QuestionAnswer+1)),
         print(QuestionAnswers.index(QuestionAnswer)+1,end=' ')
         print("*"*120)
         QuestionID=QuestionAnswer['QuestionID']
